@@ -1,57 +1,29 @@
-<h2>Help</h2>
+<h2>Gebied intekenen</h2>
 
-<p>New here? <strong>geojson.io</strong> is a quick, simple tool for creating,
-viewing, and sharing maps. geojson.io is named after <a href='http://geojson.org/' target='_blank'>GeoJSON</a>,
-an open source data format, and it supports GeoJSON in all ways - but also
-accepts KML, GPX, CSV, GTFS, TopoJSON, and other formats.</p>
+<h3>Center</h3>
 
-<p>Need extra help or see a bug? <a target='_blank' href='https://github.com/mapbox/geojson.io/issues?state=open'>Open an issue
-    on geojson.io's issue tracker.</a>
+<p>In het menu staat de knop Center. Hij centreert dan op Deventer</p>
 
-<h3>I've got data</h3>
+<h3>Zoom in op een gebied</h3>
+<p>Hiervoor zijn twee mogelijkheden. Je kan in de menubalk via meta -> zoom naar gebied in zoomen door te zoeken op naam van een gebied. Dit is de naam + .kml erachter.
+    Het alternatief vind ik makkelijker. Dit is Open -> File en dan selecteer je het gebied uit de Google Drive map. Hiervoor moet je Google Drive wel geinstalleerd hebben. 
+    Na het selecteren van het bestand zie je de contouren van het gebied. Door via meta -> clear te doen verdwijnt het gebied en kan je gaan tekenen. Het maximale zoomvniveau is 20.
+    Mocht je meer nodig hebben, dan kan ik dat regelen. 
+</p>
 
-<p>If you have data, like a KML, GeoJSON, or CSV file, just drag &amp; drop
-it onto the page or click 'Open' and 'File' - your data should appear on
-the map!</p>
+<p>Het tekenen gebeurt via de icoontjes aan de rechterkant van de kaart. Hiermee kan je een polygon tekenen door middel van de vijfhoek. De kleuren zijn tijdens het tekenen roze. 
+    Na het tekenen klik je op een van de randen en dan op save en de kleur is blauw en de binnenkant van de polygon doorzichtig. Het bloknummer kan je toevoegen door een marker te 
+    maken. Na het selecteren van de marker kan je het getal invullen als symbool. De grote is aan te passen door de size te veranderen naar large.
+    Het polygon kan je wijzige via de edit knop. Die zit aan de rechterkant van de kaart. De kaart is ook op volledig scherm beschikbaar, door op het pijltje te klikken links
+    van JSON (in de bovenrand). Hierdoor verdwijnt de GeoJSON. 
+</p>
 
-<h3>I want to draw features</h3>
-
-<p>Click the drawing tools on the left-hand side to draw points, polygons,
-lines and rectangles. After you're done drawing the shapes, you can add
-information to each feature by clicking on it, editing the feature's properties,
-and clicking 'Save'.</p>
-
-<p>Properties in GeoJSON are stored as 'key value pairs' - so, for instance,
-if you wanted to add a name to each feature, type 'name' in the first table
-field, and the name of the feature in the second.</p>
-
-<h3>I want to use my map everywhere</h3>
-
-<p>You can share maps in quite a few ways! If you save your map here, the URL
-of this page will update and you can link send friends the link to share
-the map, or you can click 'Download' to grab the raw GeoJSON data and use
-it in other software, like TileMill or Leaflet.</p>
-
-<h3>I'm a coder</h3>
-
-<p><a href='#geojson-io-api'>geojson.io has an array of cli tools</a>
-that make it easy to go from a GeoJSON file on your computer to geojson.io.
+<h3>Opslaan</h3>
+<p>Je kan de map opslaan via Save -> GeoJSON. De kaart kan je later ook weer openen door hem in te laden met File -> Open. </p>
 
 <h3>Protips?</h3>
-
 <ul>
     <li><strong>cmd+s</strong>: save map to github gists
     <li><strong>cmd+a</strong>: download map as geojson
     <li><strong>arrow keys</strong>: navigate the map
-</ul>
-
-<h3>Privacy &amp; License Issues</h3>
-
-<ul>
-    <li><strong>Clicking save</strong> by default saves to a private
-    GitHub Gist - so it will only be accessible to people you share the URL
-    with, and creating it won't appear in your GitHub timeline.
-    <li><strong>The data you create and modify in geojson.io</strong> doesn't
-    acquire any additional license: if it's secret and copyrighted, it will remain
-    that way - it doesn't have to be public or open source.
 </ul>
