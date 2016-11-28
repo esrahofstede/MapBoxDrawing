@@ -1,0 +1,14 @@
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\bin\Debug\KmlToJsonExporter.exe.config
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\bin\Debug\KmlToJsonExporter.exe
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\bin\Debug\KmlToJsonExporter.pdb
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\obj\Debug\KmlToJsonExporter.csprojResolveAssemblyReference.cache
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\obj\Debug\KmlToJsonExporter.exe
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\obj\Debug\KmlToJsonExporter.pdb
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\bin\Debug\SharpKml.dll
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\bin\Debug\SharpKml.xml
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\bin\Debug\Newtonsoft.Json.dll
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\bin\Debug\Newtonsoft.Json.xml
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\bin\Debug\KmlToJsonExporter.exe.manifest
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\bin\Debug\KmlToJsonExporter.application
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\obj\Debug\KmlToJsonExporter.exe.manifest
+C:\Github\MapBoxDrawing\KMLToJson\KmlToJsonExporter\KmlToJsonExporter\obj\Debug\KmlToJsonExporter.application
