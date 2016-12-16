@@ -22,6 +22,7 @@
   <!--[if lt IE 9]>
     <script type='text/javascript' src='lib/aight.min.js'></script>
   <![endif]-->
+  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
   <script src='lib/mapbox.js/latest/mapbox.js'></script>
   <script src='lib/raven.min.js'></script>
   <meta http-equiv="Content-Security-Policy" content="
@@ -92,7 +93,12 @@
   </style>
 </head>
 <body id='geojsonio-body'>
-
+    <div class="gebiedje-header">
+      <p class="regio print-gebied">DW</p>
+      <p class="zone print-gebied">4</p>
+      <p class="nummer print-gebied">01</p>
+      <p class="gemeente print-gebied">Gemeente Deventer Steenbrugge</p>
+    </div>
     <div class='geojsonio'></div>
 
   <script>
@@ -102,9 +108,13 @@
       top.location = self.location;
     }
   </script>
+
+ <script src="dist/leaflet.easyPrint.js"></script>
+  <script src='dist/leaflet-image.js'></script>
   <script src='dist/delegate.js'></script>
   <script src='dist/lib.js'></script>
   <script src='dist/site.js'></script>
+
   <script type='text/javascript'>
     if (/a\.tiles\.mapbox\.com/.test(L.mapbox.config.HTTP_URL)) {
       var _gauges = _gauges || [];
@@ -119,6 +129,61 @@
         s.parentNode.insertBefore(t, s);
       })();
     }
+  </script>
+  <script>
+    var fullScreenMode = false;
+    jQuery(document).keyup(function(event) {
+      if(event.key === "P"){
+        if(!fullScreenMode){
+          updateGemeenteWaarden();
+          $(".gebiedje-header").css('visibility', 'visible');
+          $(".collapse-button").click();
+          $(".right").hide();
+          $(".file-bar").hide();
+          $(".layer-switch").hide();
+          $(".leaflet-control-container").hide();
+          $(".gebiedje-header").show();
+          
+          fullScreenMode = true;
+        } else {
+          $(".right").show();
+          $(".file-bar").show();
+          $(".layer-switch").show();
+          $(".collapse-button").click();
+          $(".leaflet-control-container").show();
+          $(".gebiedje-header").hide();
+          fullScreenMode = false;
+        }
+      }
+
+      function updateGemeenteWaarden() {
+        $(".regio").text(window.api.data.get('map').regio);
+        $(".zone").text(window.api.data.get('map').zone);
+        $(".nummer").text(window.api.data.get('map').nummer);
+        $(".gemeente").text(window.api.data.get('map').gemeente);
+      }
+
+
+      
+    });
+
+    jQuery(document).keyup(function(event) {
+      if(event.key === "R"){
+        leafletImage(window.api.map, doImage);
+      }
+    });
+
+    function doImage(err, canvas) {
+        console.log("test");
+        var img = document.createElement('img');
+        var dimensions = map.getSize();
+        img.width = dimensions.x;
+        img.height = dimensions.y;
+        img.src = canvas.toDataURL();
+        $(".geojsonio").innerHTML = '';
+        $(".geojsonio").append(img);
+    }
+
   </script>
 </body>
 </html>

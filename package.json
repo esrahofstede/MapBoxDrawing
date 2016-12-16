@@ -55,6 +55,7 @@
     "start": "nodewebkit",
     "test": "eslint src",
     "make": "make",
+    "serve" : "serve -p 8080",
     "test-browser": "browserify test/index.js | testling"
   },
   "repository": {

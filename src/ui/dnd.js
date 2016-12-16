@@ -12,6 +12,11 @@ module.exports = function(context) {
             }
             if (gj && gj.features) {
                 context.data.mergeFeatures(gj.features);
+                context.data.get("map").name = gj.name;
+                context.data.get('map').regio = gj.regio;
+                context.data.get('map').zone = gj.zone;
+                context.data.get('map').nummer = gj.nummer;
+                context.data.get('map').gemeente = gj.gemeente;
                 if (warning) {
                     flash(context.container, warning.message);
                 } else {

@@ -26,7 +26,11 @@ module.exports = function(context, readonly) {
 
         L.control.scale().setPosition('bottomright').addTo(context.map);
         context.map.zoomControl.setPosition('topright');
-
+        L.easyPrint({
+            title: 'Print map',
+            position: 'bottomright',
+            elementsToHide: 'p, h2, h1, h3, div'
+        }).addTo(context.map);
         L.hash(context.map);
 
         context.mapLayer = L.featureGroup().addTo(context.map);

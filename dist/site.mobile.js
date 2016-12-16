@@ -26456,7 +26456,19 @@ module.exports = function(context) {
         function removeFeature() {
             if (e.popup._source && context.mapLayer.hasLayer(e.popup._source)) {
                 context.mapLayer.removeLayer(e.popup._source);
+                 var name = context.data.get("map").name;
+                var regio = context.data.get('map').regio;
+                var zone = context.data.get('map').zone;
+                var nummer = context.data.get('map').nummer;
+                var gemeente = context.data.get('map').gemeente;
+
                 context.data.set({map: context.mapLayer.toGeoJSON()}, 'popup');
+
+                context.data.get("map").name = name;
+                context.data.get('map').regio = regio;
+                context.data.get('map').zone = zone;
+                context.data.get('map').nummer = nummer;
+                context.data.get('map').gemeente = gemeente;
             }
         }
 
@@ -26476,8 +26488,20 @@ module.exports = function(context) {
                         losslessNumber(d3.select(this).selectAll('input')[0][1].value);
                 }
             }
+            var name = context.data.get("map").name;
+            var regio = context.data.get('map').regio;
+            var zone = context.data.get('map').zone;
+            var nummer = context.data.get('map').nummer;
+            var gemeente = context.data.get('map').gemeente;
             e.popup._source.feature.properties = obj;
+
             context.data.set({map: context.mapLayer.toGeoJSON()}, 'popup');
+            
+            context.data.get("map").name = name;
+            context.data.get('map').regio = regio;
+            context.data.get('map').zone = zone;
+            context.data.get('map').nummer = nummer;
+            context.data.get('map').gemeente = gemeente;
             context.map.closePopup(e.popup);
         }
 
@@ -27362,6 +27386,11 @@ module.exports = function(context) {
             }
             if (gj && gj.features) {
                 context.data.mergeFeatures(gj.features);
+                context.data.get("map").name = gj.name;
+                context.data.get('map').regio = gj.regio;
+                context.data.get('map').zone = gj.zone;
+                context.data.get('map').nummer = gj.nummer;
+                context.data.get('map').gemeente = gj.gemeente;
                 if (warning) {
                     flash(context.container, warning.message);
                 } else {
@@ -27503,15 +27532,25 @@ module.exports = function fileBar(context) {
                             }
                         }
                     }, {
-                        title: 'Random: Points',
-                        alt: 'Add random points to your map',
+                        title: 'Vul gebiedsnaam in',
+                        alt: 'Vul de regio, zone en nummer in van het gebied',
                         action: function() {
-                            var response = prompt('Number of points (default: 100)');
-                            if (response === null) return;
-                            var count = parseInt(response, 10);
-                            if (isNaN(count)) count = 100;
-                            meta.random(context, count, 'point');
-                        }
+                            var regioResponse = prompt('Regio');
+                            if (regioResponse === null) return;
+                            window.api.data.get('map').regio = regioResponse;
+                            var zoneResponse = prompt('Zone');
+                            if (zoneResponse === null) return;
+                            window.api.data.get('map').zone = zoneResponse;
+                            var nummerResponse = prompt('Gebiedsnummer');
+                            if (nummerResponse === null) return;
+                            window.api.data.get('map').nummer = nummerResponse;
+                            var gemeenteResponse = prompt('Gemeente (default Gemeente Deventer Steenbrugge)');
+                            if (gemeenteResponse === null || gemeenteResponse == "") {
+                                window.api.data.get('map').gemeente = "Gemeente Deventer Steenbrugge"
+                            } else {
+                                window.api.data.get('map').gemeente = gemeenteResponse;
+                            }
+                                                      }
                     }, {
                         title: 'Add bboxes',
                         alt: 'Add bounding box members to all applicable GeoJSON objects',
@@ -27831,6 +27870,11 @@ module.exports = function fileBar(context) {
             gj = geojsonNormalize(gj);
             if (gj) {
                 context.data.mergeFeatures(gj.features);
+                context.data.get("map").name = gj.name;
+                context.data.get('map').regio = gj.regio;
+                context.data.get('map').zone = gj.zone;
+                context.data.get('map').nummer = gj.nummer;
+                context.data.get('map').gemeente = gj.gemeente;
                 if (warning) {
                     flash(context.container, warning.message);
                 } else {
@@ -27865,9 +27909,18 @@ module.exports = function fileBar(context) {
         if (d3.event) d3.event.preventDefault();
         var content = JSON.stringify(context.data.get('map'));
         var meta = context.data.get('meta');
+        var regio = window.api.data.get('map').regio;
+        var zone = window.api.data.get('map').zone;
+        var nummer = window.api.data.get('map').nummer;
+        var filename = "map";
+        if(regio != null && zone != null && nummer != null && 
+            regio != "" && zone != "" && nummer != "") {
+                filename = regio + zone + nummer;
+        }
+
         saveAs(new Blob([content], {
             type: 'text/plain;charset=utf-8'
-        }), (meta && meta.name) || 'map.geojson');
+        }), (meta && meta.name) || filename + '.geojson');
     }
 
     function downloadDSV() {
@@ -30614,7 +30667,11 @@ module.exports = function(context, readonly) {
 
         L.control.scale().setPosition('bottomright').addTo(context.map);
         context.map.zoomControl.setPosition('topright');
-
+        L.easyPrint({
+            title: 'Print map',
+            position: 'bottomright',
+            elementsToHide: 'p, h2, h1, h3, div'
+        }).addTo(context.map);
         L.hash(context.map);
 
         context.mapLayer = L.featureGroup().addTo(context.map);

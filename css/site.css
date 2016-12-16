@@ -553,3 +553,34 @@ div.children a {
 .metadata td {
     padding:5px;
 }
+
+
+/*Gebiedje*/
+.gebiedje-header {
+    background: cornflowerblue;
+    color: white;
+    height: 75px;
+    font-size: 28px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    visibility: hidden;
+}
+
+.print-gebied {
+    display: inline;
+}
+
+.regio {
+    padding-left: 10px;
+}
+.zone {
+    padding-left: 10px;
+    font-weight: bold;
+}
+.gemeente {
+    flex-grow: 4;
+    text-align: center;
+}
